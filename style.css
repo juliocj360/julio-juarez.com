@@ -8,7 +8,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
+  height: 92vh;
 }
 
 .overlay {
@@ -29,4 +29,38 @@ body {
   padding: 40px;
   position: absolute;
   top: 20%;
+}
+
+.sticky-nav {
+  height: 8vh;
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+  background-color: black;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  line-height: 100%;
+}
+
+.brand {
+  height: 100%;
+  padding: .5% 2%;
+  position: relative;
+  float: left;
+}
+
+.links {
+  padding: .5% 2%;
+  margin: auto;
+  display: inline;
+  position: relative;
+  top: 20%;
+  float: right;
+}
+
+.icons {
+  margin: 5px;
+  color: white;
 }
