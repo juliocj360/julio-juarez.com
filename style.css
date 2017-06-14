@@ -37,7 +37,9 @@ body {
   position: -webkit-sticky;
   position: sticky;
   top: -1px;
-  background-color: black;
+  background: #000000;
+  background: -webkit-linear-gradient(to right, #000000, #434343);
+  background: linear-gradient(to right, #000000, #434343);
   color: white;
   font-family: 'Quicksand', sans-serif;
   font-size: 16px;
@@ -52,19 +54,36 @@ body {
 }
 
 .links {
+  height: 100%;
   padding: .5% 2%;
   margin: auto;
   display: inline;
   position: relative;
-  top: 20%;
   float: right;
 }
 
 .icons {
-  margin: 5px;
-  color: white;
+  position: relative;
+  top: 25%;
+  height: 100%;
+  margin: 5px 10px;
+  color: rgb(211, 211, 211);
+}
+
+.img-rounded {
+  max-height: 200px;
 }
 
 footer {
   background-color: black;
+  color: rgb(107, 113, 124);
+}
+
+#about {
+  font-family: 'Quicksand', sans-serif;
+  margin-top: 20px;
+  background: #c21500;
+  background: -webkit-linear-gradient(to right, #ffc500, #c21500);
+  background: linear-gradient(to right, #ffc500, #c21500);
+  color: white;
 }
