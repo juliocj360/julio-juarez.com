@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Engagement|Quicksand" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/jtab.png">
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.20.min.js"></script>
   </head>
   <body>
     <div class="site-wrapper">
@@ -42,6 +43,32 @@
             <img src="images/JJ.jpg" class="img-rounded">
             <h2>Julio Juarez</h2>
             <p>An innovative code whisperer with an eye for design.</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-center" id="chat">
+            <p>Let's chat!</p>
+          </div>
+          <div class="col-md-6">
+            <form>
+              <div class="form-group">
+                <label for="nameInput">Name</label>
+                <input type="name" class="form-control" id="nameInput" placeholder="Let's not be strangers." required>
+              </div>
+              <div class="form-group">
+                <label for="emailInput">Email address</label>
+                <input type="email" class="form-control" id="emailInput" placeholder="Don't worry, I won't spam you." required>
+              </div>
+              <div class="form-group">
+                <label for="textInput">Message</label>
+                <input type="text" class="form-control" id="textInput" placeholder="Write your message here." required>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary text-center" onclick="formSubmit(); return false;" id="contact-button">Submit</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
       <footer class="text-right">
