@@ -55,3 +55,65 @@ window.onload = function() {
   css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
   document.body.appendChild(css);
 }
+
+var LPAWS = {};
+
+AWS.config.region = 'us-east-1';
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: 'us-east-1:feb90a7a-d5db-4ed9-b757-5b36e829cfc4',
+});
+
+LPAWS.sendToTopic = function(params) {
+  let secondMsg = false
+  const button = document.getElementById('contact-button')
+  if (button.textContent === 'Another Message?') {
+    secondMsg = true
+  }
+  button.textContent = "Sending..."
+  button.style.backgroundColor = "#08e069"
+    var sns = new AWS.SNS();
+    sns.publish(params, function(err, data) {
+        if (err) {
+          button.textContent = "Error, try again."
+          button.style.backgroundColor = "#e00719"
+          console.log(err, err.stack);
+        }
+        else {
+          button.textContent = secondMsg ? "2nd message sent!" : "Message Sent!"
+        }
+    });
+};
+
+const formSubmit = () => {
+  const name = document.querySelector('#nameInput')
+  const email = document.querySelector('#emailInput')
+  const text = document.querySelector('#textInput')
+  const button = document.getElementById('contact-button')
+
+  var params = {
+      Message: `Name: ${name.value}, Email: ${email.value}, Text: ${text.value}`,
+      Subject: 'Browser SNS publish - contact form',
+      TopicArn: 'arn:aws:sns:us-east-1:900566148122:website-contact-form'
+  };
+  if (name.value.length === 0) {
+    name.style.borderColor = "red"
+  }
+  else if (email.value.length === 0) {
+    email.style.borderColor = "red"
+  }
+  else if (text.value.length === 0) {
+    text.style.borderColor = "red"
+  }
+  else if (button.textContent === 'Message Sent!') {
+    button.textContent = "Another Message?"
+  }
+  else if (button.textContent === '2nd message sent!' || button.textContent === "Sorry, I'm gonna have to cut you off. Try my email instead.") {
+    button.textContent = "Sorry, I'm gonna have to cut you off. Try my email instead."
+  }
+  else {
+    name.style.borderColor = ''
+    email.style.borderColor = ''
+    text.style.borderColor = ''
+    LPAWS.sendToTopic(params)
+  }
+}

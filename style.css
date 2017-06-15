@@ -44,6 +44,7 @@ body {
   font-family: 'Quicksand', sans-serif;
   font-size: 16px;
   line-height: 100%;
+  z-index: 999999;
 }
 
 .brand {
@@ -86,4 +87,15 @@ footer {
   background: -webkit-linear-gradient(to right, #ffc500, #c21500);
   background: linear-gradient(to right, #ffc500, #c21500);
   color: white;
+}
+
+#chat {
+  font-family: 'Engagement', cursive;
+  font-size: 80px;
+  color: rgb(21, 102, 234);
+  padding-top: 60px;
+}
+
+#contact-button {
+  min-width: 300px;
 }
