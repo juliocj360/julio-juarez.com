@@ -45,29 +45,47 @@
             <p>An innovative code whisperer with an eye for design.</p>
         </div>
       </div>
-      <div class="container">
+      <div class="container text-center" id="favorites">
         <div class="row">
-          <div class="col-md-6 text-center" id="chat">
-            <p>Let's chat!</p>
+          <div class="col-md-6 text-center">
+            <img src="images/faves2.png" class="img-responsive center-block" id="fave-img">
           </div>
-          <div class="col-md-6">
-            <form>
-              <div class="form-group">
-                <label for="nameInput">Name</label>
-                <input type="name" class="form-control" id="nameInput" placeholder="Let's not be strangers." required>
-              </div>
-              <div class="form-group">
-                <label for="emailInput">Email address</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="Don't worry, I won't spam you." required>
-              </div>
-              <div class="form-group">
-                <label for="textInput">Message</label>
-                <input type="text" class="form-control" id="textInput" placeholder="Write your message here." required>
-              </div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary text-center" onclick="formSubmit(); return false;" id="contact-button">Submit</button>
-              </div>
-            </form>
+          <div class="col-md-6 text-left" id="fave-text">
+            <h2 class="text-center">My Favorites</h2>
+            <h3>HTML, CSS, JavaScript, Git and Bootstrap</h3>
+            <h4>My tools of choice! Along with a little bit of ingenuity and creativity I can create unique and engaging web experiences.</h4>
+            <h3>Node.js, MongoDB, NPM</h3>
+            <h4>Building a strong backend with a RESTful API can give your application robust features seemlessly.</h4>
+            <h3>Also experienced with...</h3>
+            <h4>Angular 2/4, React, Redux, Express, SQL, AWS, Google Analytics, WordPress, and much more!</h4>
+          </div>
+        </div>
+      </div>
+      <div class="chat-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center" id="chat">
+              <p>Let's chat!</p>
+            </div>
+            <div class="col-md-6">
+              <form>
+                <div class="form-group">
+                  <label for="nameInput">Name</label>
+                  <input type="name" class="form-control" id="nameInput" placeholder="Let's not be strangers." required>
+                </div>
+                <div class="form-group">
+                  <label for="emailInput">Email address</label>
+                  <input type="email" class="form-control" id="emailInput" placeholder="Don't worry, I won't spam you." required>
+                </div>
+                <div class="form-group">
+                  <label for="textInput">Message</label>
+                  <input type="text" class="form-control" id="textInput" placeholder="Write your message here." required>
+                </div>
+                <div class="form-group text-center">
+                  <button type="submit" class="btn btn-primary text-center" onclick="formSubmit(); return false;" id="contact-button">Submit</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
