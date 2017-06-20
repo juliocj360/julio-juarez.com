@@ -69,20 +69,25 @@ LPAWS.sendToTopic = function(params) {
   if (button.textContent === 'Another Message?') {
     secondMsg = true
   }
-  button.textContent = "Sending..."
-  button.style.backgroundColor = "#08e069"
-    var sns = new AWS.SNS();
-    sns.publish(params, function(err, data) {
-        if (err) {
-          button.textContent = "Error, try again."
-          button.style.backgroundColor = "#e00719"
-          console.log(err, err.stack);
-        }
-        else {
-          button.textContent = secondMsg ? "2nd message sent!" : "Message Sent!"
-        }
-    });
-};
+  button.textContent = ""
+  const spinner = document.createElement('i')
+  spinner.className = 'fa fa-spinner fa-spin fa-3x fa-fw'
+  spinner.style.fontSize = '1em'
+  button.appendChild(spinner)
+
+  var sns = new AWS.SNS()
+  sns.publish(params, function(err, data) {
+    if (err) {
+      button.textContent = "Error, try again."
+      button.style.backgroundColor = "#e00719"
+      console.log(err, err.stack)
+    }
+    else {
+      button.removeChild(button.firstChild)
+      button.textContent = secondMsg ? "2nd message sent!" : "Message Sent!"
+    }
+  })
+}
 
 const formSubmit = () => {
   const name = document.querySelector('#nameInput')
