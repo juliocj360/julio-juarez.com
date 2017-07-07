@@ -1,3 +1,7 @@
+#wrapper {
+  font-family:'Quicksand',sans-serif;
+}
+
 .cover-container {
   background: url(images/background2.jpg)no-repeat center center fixed;
   -webkit-background-size: cover;

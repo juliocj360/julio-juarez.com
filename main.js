@@ -42,29 +42,28 @@ TxtType.prototype.tick = function() {
 }
 
 window.onload = function() {
-  var elements = document.getElementsByClassName('typewrite');
-  for (var i=0; i<elements.length; i++) {
-    var toRotate = elements[i].getAttribute('data-type');
-    var period = elements[i].getAttribute('data-period');
+  setTimeout(loaderRemove, 500)
+  setTimeout(typer, 700)
+}
+
+const typer = () => {
+  const elements = document.getElementsByClassName('typewrite');
+  for (let i=0; i<elements.length; i++) {
+    const toRotate = elements[i].getAttribute('data-type');
+    const period = elements[i].getAttribute('data-period');
     if (toRotate) {
       new TxtType(elements[i], JSON.parse(toRotate), period);
     }
   }
-  var css = document.createElement("style");
+  const css = document.createElement("style");
   css.type = "text/css";
   css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
   document.body.appendChild(css);
-
-  loaderRemove()
 }
 
 const loaderRemove = () => {
   const el = document.getElementById('wrapper')
   const loader = document.getElementById('loader')
-
-  while (loader.firstChild) {
-    loader.removeChild(loader.firstChild);
-  }
   el.removeChild(loader)
 }
 
