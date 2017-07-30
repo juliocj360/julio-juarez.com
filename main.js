@@ -44,15 +44,16 @@ TxtType.prototype.tick = function() {
 window.onload = function() {
   setTimeout(loaderRemove, 500)
   setTimeout(typer, 700)
+  setTimeout(arrowReveal, 2500)
 }
 
 const typer = () => {
   const elements = document.getElementsByClassName('typewrite');
   for (let i=0; i<elements.length; i++) {
-    const toRotate = elements[i].getAttribute('data-type');
+    const toRotate = [ "Hi, I'm Julio.", 'I love to code.', 'And coffee.', 'Lots of coffee...']
     const period = elements[i].getAttribute('data-period');
     if (toRotate) {
-      new TxtType(elements[i], JSON.parse(toRotate), period);
+      new TxtType(elements[i], toRotate, period);
     }
   }
   const css = document.createElement("style");
@@ -132,4 +133,46 @@ const formSubmit = () => {
     text.style.borderColor = ''
     LPAWS.sendToTopic(params)
   }
+}
+
+const downArrow = document.getElementById("down-arrow");
+
+downArrow.onclick = function() {
+  const aboutSect = document.getElementById('about-section').offsetTop
+  const chatSect = document.getElementById('chat').offsetTop
+  const scrollPos = window.scrollY
+  if ((window.innerHeight + scrollPos) >= getDocHeight()) {
+    TweenMax.to(window, 1, {scrollTo:{y:"#wrapper", autoKill:false}, ease:Strong.easeOut})
+  }
+  else if (scrollPos >= chatSect) {
+    TweenMax.to(window, 1, {scrollTo:{y:"#footer", autoKill:false}, ease:Strong.easeOut})
+  }
+  else if (scrollPos >= aboutSect) {
+    TweenMax.to(window, 1, {scrollTo:{y:"#chat", autoKill:false}, ease:Strong.easeOut})
+  }
+  else {
+    TweenMax.to(window, 1, {scrollTo:{y:"#about-section", autoKill:false}, ease:Strong.easeOut})
+  }
+}
+
+const getDocHeight = () => {
+    const D = document;
+    return Math.max(
+        D.body.scrollHeight, D.documentElement.scrollHeight,
+        D.body.offsetHeight, D.documentElement.offsetHeight,
+        D.body.clientHeight, D.documentElement.clientHeight
+    );
+}
+
+window.onscroll = () => {
+  if ((window.innerHeight + window.scrollY) >= getDocHeight()) {
+    TweenMax.to("#down-arrow", .3, {rotation:180})
+  }
+  else {
+    TweenMax.to("#down-arrow", .3, {rotation:0})
+  }
+}
+
+const arrowReveal = () => {
+  TweenMax.to("#down-arrow", .3, {opacity:1})
 }

@@ -112,3 +112,24 @@ footer {
 #fave-img {
   padding-top: 20px;
 }
+
+#down-arrow {
+  position: fixed;
+  color: rgba(230, 230, 230, 1);
+  z-index: 1000;
+  font-size: 30px;
+  bottom: 5px;
+  text-align: center;
+  margin: auto;
+  left: 48%;
+  background-color: rgba(98, 135, 196, 0.5);
+  border-radius: 19px;
+  width: 30px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+#down-arrow:hover {
+  background-color: rgba(67, 99, 150, 0.85);
+  back
+}
