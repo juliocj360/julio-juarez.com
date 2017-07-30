@@ -44,15 +44,16 @@ TxtType.prototype.tick = function() {
 window.onload = function() {
   setTimeout(loaderRemove, 500)
   setTimeout(typer, 700)
+  setTimeout(arrowReveal, 2500)
 }
 
 const typer = () => {
   const elements = document.getElementsByClassName('typewrite');
   for (let i=0; i<elements.length; i++) {
-    const toRotate = elements[i].getAttribute('data-type');
+    const toRotate = [ "Hi, I'm Julio.", 'I love to code.', 'And coffee.', 'Lots of coffee...']
     const period = elements[i].getAttribute('data-period');
     if (toRotate) {
-      new TxtType(elements[i], JSON.parse(toRotate), period);
+      new TxtType(elements[i], toRotate, period);
     }
   }
   const css = document.createElement("style");
@@ -134,30 +135,44 @@ const formSubmit = () => {
   }
 }
 
-const test = document.getElementById("test");
+const downArrow = document.getElementById("down-arrow");
 
-test.onclick = function() {
-  TweenMax.to(window, 1, {scrollTo:{y:"#about-section", autoKill:false}, ease:Strong.easeOut})
-  const contButton = document.getElementById('fave-text')
-  console.log(isElementVisible(contButton))
+downArrow.onclick = function() {
+  const aboutSect = document.getElementById('about-section').offsetTop
+  const chatSect = document.getElementById('chat').offsetTop
+  const scrollPos = window.scrollY
+  if ((window.innerHeight + scrollPos) >= getDocHeight()) {
+    TweenMax.to(window, 1, {scrollTo:{y:"#wrapper", autoKill:false}, ease:Strong.easeOut})
+  }
+  else if (scrollPos >= chatSect) {
+    TweenMax.to(window, 1, {scrollTo:{y:"#footer", autoKill:false}, ease:Strong.easeOut})
+  }
+  else if (scrollPos >= aboutSect) {
+    TweenMax.to(window, 1, {scrollTo:{y:"#chat", autoKill:false}, ease:Strong.easeOut})
+  }
+  else {
+    TweenMax.to(window, 1, {scrollTo:{y:"#about-section", autoKill:false}, ease:Strong.easeOut})
+  }
 }
 
-function isElementVisible(el) {
-    var rect     = el.getBoundingClientRect(),
-        vWidth   = window.innerWidth || doc.documentElement.clientWidth,
-        vHeight  = window.innerHeight || doc.documentElement.clientHeight,
-        efp      = function (x, y) { return document.elementFromPoint(x, y) };
-
-    // Return false if it's not in the viewport
-    if (rect.right < 0 || rect.bottom < 0
-            || rect.left > vWidth || rect.top > vHeight)
-        return false;
-
-    // Return true if any of its four corners are visible
-    return (
-          el.contains(efp(rect.left,  rect.top))
-      ||  el.contains(efp(rect.right, rect.top))
-      ||  el.contains(efp(rect.right, rect.bottom))
-      ||  el.contains(efp(rect.left,  rect.bottom))
+const getDocHeight = () => {
+    const D = document;
+    return Math.max(
+        D.body.scrollHeight, D.documentElement.scrollHeight,
+        D.body.offsetHeight, D.documentElement.offsetHeight,
+        D.body.clientHeight, D.documentElement.clientHeight
     );
+}
+
+window.onscroll = () => {
+  if ((window.innerHeight + window.scrollY) >= getDocHeight()) {
+    TweenMax.to("#down-arrow", .3, {rotation:180})
+  }
+  else {
+    TweenMax.to("#down-arrow", .3, {rotation:0})
+  }
+}
+
+const arrowReveal = () => {
+  TweenMax.to("#down-arrow", .3, {opacity:1})
 }
