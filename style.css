@@ -119,9 +119,9 @@ footer {
   z-index: 1000;
   font-size: 30px;
   bottom: 5px;
+  margin-left: -15px;
   text-align: center;
-  margin: auto;
-  left: 48%;
+  left: 50%;
   background-color: rgba(98, 135, 196, 0.5);
   border-radius: 19px;
   width: 30px;
