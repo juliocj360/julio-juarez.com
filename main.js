@@ -42,8 +42,8 @@ TxtType.prototype.tick = function() {
 }
 
 window.onload = function() {
-  setTimeout(loaderRemove, 500)
-  setTimeout(typer, 700)
+  setTimeout(loaderFadeOut, 500)
+  setTimeout(typer, 800)
   setTimeout(arrowReveal, 2500)
 }
 
@@ -60,6 +60,13 @@ const typer = () => {
   css.type = "text/css";
   css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
   document.body.appendChild(css);
+}
+
+const loaderFadeOut = () => {
+  TweenMax.to("#loader", .3, {opacity:0, onComplete: () => {
+      loaderRemove()
+    }
+  })
 }
 
 const loaderRemove = () => {
