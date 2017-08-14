@@ -53,12 +53,11 @@
 }
 
 .links {
-  height: 100%;
-  padding: .5% 2%;
-  margin: auto;
+  padding: 0 2%;
   display: inline;
   position: relative;
   float: right;
+  top: calc(50% - 8px)
 }
 
 .icons {
